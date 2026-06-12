@@ -1,0 +1,15 @@
+.empty-state {
+  display: grid;
+  place-items: center;
+  gap: 0.85rem;
+  min-height: 16rem;
+  padding: 2rem;
+  border: 1px dashed rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  color: var(--color-muted);
+  text-align: center;
+}
+
+.empty-state h2 {
+  color: var(--color-text);
+}

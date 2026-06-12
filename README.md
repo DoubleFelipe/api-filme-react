@@ -1,51 +1,84 @@
-# API DE FILMES USANDO REACTJS
+# CineScope - Filmes com React e TMDB
 
-Por [Diego Candido](https://diegocandido.com)
+Aplicação React moderna para explorar filmes do TMDB, pesquisar títulos em tempo real, ver detalhes completos e salvar favoritos no navegador.
 
+## Tecnologias
 
-Montei esse projeto bem básico para consumir uma API Rest com lista de filmes.
+- React 19
+- Vite
+- React Router DOM
+- Axios
+- Lucide React
+- ESLint
+- Prettier
+- TMDB API
 
+## Estrutura
 
-
-## Site que fornece a API grátis: 
+```text
+src/
+├── assets/
+├── components/
+│   ├── EmptyState/
+│   ├── ErrorBoundary/
+│   ├── ErrorState/
+│   ├── Footer/
+│   ├── Header/
+│   ├── Loading/
+│   ├── MovieCard/
+│   └── SearchBar/
+├── context/
+├── hooks/
+├── pages/
+│   ├── Favorites/
+│   ├── Home/
+│   ├── MovieDetails/
+│   └── NotFound/
+├── routes/
+├── services/
+├── styles/
+├── utils/
+├── App.jsx
+└── main.jsx
 ```
-https://www.themoviedb.org/
-```
 
-## Documentação Oficial do projeto:
-```
-https://www.themoviedb.org/documentation/api
-```
+## Como executar
 
-Irá ser necessário a geração de uma chave privada nesse link:
-```
-https://www.themoviedb.org/settings/api
-```
-
-## Token no arquivo .ENV ##
-Para acessar a API Restfull do site é necessário criar um token e colocar em um arquivo .ENV na raíz do projeto. Conforme imagem abaixo:
-
-![print](https://user-images.githubusercontent.com/1766790/191596782-51cd52f4-d471-4930-9e33-d792ad4aeeb1.JPG)
-
-
-## Clonando o Repositório ##
-Com o Git e o Node.js instalado na sua maquina e a **URL** do projeto em mãos, cria em algum lugar do seu pc uma pasta para criarmos uma copia do repositório, dentro dela abra o **cmd** ou **powershell** e digite os comandos abaixo:
-```
-git clone https://github.com/diegocandido/react-filmes.git
-cd react-filmes
+```bash
 npm install
 npm start
 ```
 
-## Tela Inicial do projeto:
+Também é possível usar:
 
-![screan](https://user-images.githubusercontent.com/81689363/190420116-177e6087-c1dd-4276-bef1-1dd20e575039.PNG)
+```bash
+npm run dev
+npm run build
+npm run preview
+npm run lint
+```
 
+## Configuração do TMDB
 
-## Tela de detalhes do filme:
+1. Crie uma conta em `https://www.themoviedb.org/`.
+2. Gere uma API Key em `https://www.themoviedb.org/settings/api`.
+3. Copie `.env.example` para `.env`.
+4. Preencha a variável:
 
-![details](https://user-images.githubusercontent.com/81689363/190419902-82b9ce94-3944-4bdb-ad1c-e35a93b142e1.PNG)
+```env
+VITE_TMDB_API_KEY=sua_chave_do_tmdb_aqui
+```
 
+O arquivo `.env` está no `.gitignore`, então a chave local não deve ser enviada ao repositório.
 
+## Funcionalidades
 
- 
+- Listas de filmes populares, mais bem avaliados, em cartaz e próximos lançamentos.
+- Pesquisa por nome com debounce.
+- Paginação moderna na busca com botão "Carregar mais".
+- Página de detalhes com poster em alta resolução, sinopse, lançamento, nota, gêneros, duração, elenco, trailer do YouTube e filmes semelhantes.
+- Favoritos com persistência em `localStorage`.
+- Dark mode padrão com layout responsivo.
+- Skeleton loading, feedbacks de erro, fallback de imagens e Error Boundary.
+- Lazy loading de rotas, code splitting e cache simples de requisições.
+- Melhorias de acessibilidade com labels, foco visível, navegação por teclado e link para pular ao conteúdo.
