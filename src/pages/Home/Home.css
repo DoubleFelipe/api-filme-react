@@ -67,3 +67,5 @@
     min-height: 30rem;
   }
 }
+.category-menu { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+.category-menu button, .text-button { border: 1px solid rgba(255,255,255,.15); border-radius: 999px; padding: .45rem .8rem; background: var(--color-surface); color: var(--color-text); cursor: pointer; }

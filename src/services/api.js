@@ -188,6 +188,15 @@ export async function searchMovies(query, page = 1) {
   );
 }
 
+export async function getGenres() {
+  const data = await request("/genre/movie/list");
+  return asArray(data.genres).filter((genre) => genre?.id && genre?.name);
+}
+
+export async function getMoviesByGenre(genreId, page = 1) {
+  return validateListResponse(await request("/discover/movie", { with_genres: genreId, sort_by: "popularity.desc", page }));
+}
+
 export async function getMovieDetails(id) {
   const movieId = Number(id);
 

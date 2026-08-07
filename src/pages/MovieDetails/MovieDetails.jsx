@@ -5,6 +5,8 @@ import { ErrorState } from "../../components/ErrorState/ErrorState.jsx";
 import { Loading } from "../../components/Loading/Loading.jsx";
 import { MovieCard } from "../../components/MovieCard/MovieCard.jsx";
 import { useFavorites } from "../../context/FavoritesContext.jsx";
+import { useComments } from "../../context/CommentsContext.jsx";
+import { useAuth } from "../../context/AuthContext.jsx";
 import { getMovieDetails } from "../../services/api.js";
 import {
   formatDate,
@@ -21,6 +23,7 @@ export default function MovieDetails() {
   const [state, setState] = useState({ status: "loading", movie: null, error: "" });
   const [posterSrc, setPosterSrc] = useState(POSTER_FALLBACK);
   const { isFavorite, toggleFavorite } = useFavorites();
+  const { comments, addComment } = useComments(); const { currentUser } = useAuth(); const [comment, setComment] = useState("");
 
   useEffect(() => {
     let isCurrent = true;
@@ -201,6 +204,11 @@ export default function MovieDetails() {
           </div>
         </section>
       ) : null}
+      <section className="content-section comments-section" aria-labelledby="comments-title">
+        <div className="section-heading"><div><p className="eyebrow">Comunidade</p><h2 id="comments-title">Comentários</h2></div></div>
+        {currentUser ? <form className="comment-form" onSubmit={(e) => { e.preventDefault(); if (comment.trim()) { addComment(movie.id, comment); setComment(""); } }}><input value={comment} onChange={(e) => setComment(e.target.value)} placeholder="Escreva um comentário" aria-label="Comentário" /><button className="primary-action" type="submit">Comentar</button></form> : <p className="muted-text">Faça login para comentar.</p>}
+        <div className="comments-list">{(comments[movie.id] || []).map((item) => <article className="comment-card" key={item.id}><strong>{item.author}</strong><p>{item.text}</p></article>)}</div>
+      </section>
     </div>
   );
 }

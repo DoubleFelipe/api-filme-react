@@ -6,6 +6,7 @@ const Home = lazy(() => import("../pages/Home/Home.jsx"));
 const MovieDetails = lazy(() => import("../pages/MovieDetails/MovieDetails.jsx"));
 const Favorites = lazy(() => import("../pages/Favorites/Favorites.jsx"));
 const NotFound = lazy(() => import("../pages/NotFound/NotFound.jsx"));
+const Login = lazy(() => import("../pages/Login/Login.jsx"));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -25,6 +26,7 @@ export function AppRoutes() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/favoritos" element={<Favorites />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/movie/:id" element={<MovieDetails />} />
           <Route path="/:id" element={<MovieDetails />} />
           <Route path="*" element={<NotFound />} />

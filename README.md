@@ -71,6 +71,15 @@ VITE_TMDB_API_KEY=sua_chave_do_tmdb_aqui
 
 O arquivo `.env` está no `.gitignore`, então a chave local não deve ser enviada ao repositório.
 
+## Login de teste
+
+O login atual e apenas para demonstracao e nao possui backend. Usuarios, sessao e comentarios ficam salvos somente no navegador, em `localStorage`.
+
+- E-mail: `teste@cinescope.com`
+- Senha: `123456`
+
+As funcionalidades incluem categorias por genero, compartilhamento da lista de favoritos por link e comentarios locais na pagina de cada filme.
+
 ## Funcionalidades
 
 - Listas de filmes populares, mais bem avaliados, em cartaz e próximos lançamentos.

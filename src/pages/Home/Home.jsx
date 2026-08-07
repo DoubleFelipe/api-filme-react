@@ -1,5 +1,6 @@
 import { ChevronRight } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { ErrorState } from "../../components/ErrorState/ErrorState.jsx";
 import { Loading } from "../../components/Loading/Loading.jsx";
 import { MovieCard } from "../../components/MovieCard/MovieCard.jsx";
@@ -11,6 +12,8 @@ import {
   getTopRatedMovies,
   getUpcomingMovies,
   searchMovies,
+  getGenres,
+  getMoviesByGenre,
 } from "../../services/api.js";
 import "./Home.css";
 
@@ -33,6 +36,10 @@ function MovieGrid({ movies }) {
 
 export default function Home() {
   const [query, setQuery] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [genres, setGenres] = useState([]);
+  const category = searchParams.get("category");
+  const [categoryMovies, setCategoryMovies] = useState([]);
   const debouncedQuery = useDebounce(query, 450);
   const [sections, setSections] = useState({});
   const [homeStatus, setHomeStatus] = useState("loading");
@@ -71,7 +78,10 @@ export default function Home() {
 
   useEffect(() => {
     loadHome();
+    getGenres().then(setGenres).catch(() => {});
   }, [loadHome]);
+
+  useEffect(() => { if (category) getMoviesByGenre(category).then((data) => setCategoryMovies(data.results)).catch(() => setCategoryMovies([])); }, [category]);
 
   useEffect(() => {
     let isCurrent = true;
@@ -157,10 +167,11 @@ export default function Home() {
             onChange={setQuery}
             onClear={() => setQuery("")}
           />
+          <div className="category-menu">{genres.map((genre) => <button key={genre.id} type="button" onClick={() => setSearchParams({ category: String(genre.id) })}>{genre.name}</button>)}</div>
         </div>
       </section>
 
-      {hasSearch ? (
+      {category ? <section className="content-section"><div className="section-heading"><h2>Categoria: {genres.find((g) => String(g.id) === category)?.name}</h2><button className="text-button" onClick={() => setSearchParams({})}>Limpar categoria</button></div><MovieGrid movies={categoryMovies} /></section> : hasSearch ? (
         <section className="content-section page-transition" aria-labelledby="search-title">
           <div className="section-heading">
             <div>

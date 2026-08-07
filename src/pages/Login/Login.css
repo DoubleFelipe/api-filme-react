@@ -1,0 +1,5 @@
+.auth-page { display: grid; place-items: center; }
+.auth-card { display: grid; gap: 1rem; width: min(100%, 420px); padding: 2rem; border: 1px solid rgba(255,255,255,.1); border-radius: 20px; background: var(--color-surface); }
+.auth-card h1 { font-size: 2.2rem; }
+.auth-card input { min-height: 2.8rem; padding: 0 .8rem; border: 1px solid rgba(255,255,255,.15); border-radius: 8px; background: var(--color-surface-strong); color: var(--color-text); }
+.auth-error { color: #ff8993; }.text-button { border: 0; background: transparent; color: var(--color-cyan); cursor: pointer; }
