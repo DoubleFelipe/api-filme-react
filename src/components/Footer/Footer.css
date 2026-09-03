@@ -1,5 +1,39 @@
 .site-footer {
-  padding: 2rem clamp(1rem, 4vw, 3rem);
-  color: var(--color-muted);
+  margin-top: 4rem;
+  padding: 3rem var(--cs-gutter);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  background: var(--cs-bg);
+}
+
+.site-footer__inner {
+  max-width: var(--cs-max-w);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
   text-align: center;
+}
+
+.site-footer__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--cs-on-surface);
+  font-size: 1.125rem;
+  font-weight: 800;
+}
+
+.site-footer__brand em {
+  font-style: normal;
+  color: var(--cs-primary-container);
+}
+
+.site-footer__brand .material-symbols-outlined {
+  color: var(--cs-tertiary);
+}
+
+.site-footer p {
+  color: var(--cs-muted);
+  font-size: 0.875rem;
 }

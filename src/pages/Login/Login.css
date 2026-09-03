@@ -1,5 +1,146 @@
-.auth-page { display: grid; place-items: center; }
-.auth-card { display: grid; gap: 1rem; width: min(100%, 420px); padding: 2rem; border: 1px solid rgba(255,255,255,.1); border-radius: 20px; background: var(--color-surface); }
-.auth-card h1 { font-size: 2.2rem; }
-.auth-card input { min-height: 2.8rem; padding: 0 .8rem; border: 1px solid rgba(255,255,255,.15); border-radius: 8px; background: var(--color-surface-strong); color: var(--color-text); }
-.auth-error { color: #ff8993; }.text-button { border: 0; background: transparent; color: var(--color-cyan); cursor: pointer; }
+/* ── Login / Autenticação ─────────────────────────────────── */
+.auth-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 5rem var(--cs-gutter) 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradiente de fundo */
+.auth-page::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at top left, rgba(255,82,94,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom right, rgba(68,226,205,0.08) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Card de autenticação */
+.auth-card {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 1rem;
+  width: min(100%, 440px);
+  padding: 2.5rem;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 1.25rem;
+  background: rgba(29,31,38,0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow:
+    0 32px 80px rgba(0,0,0,0.5),
+    0 0 0 1px rgba(255,255,255,0.05) inset;
+}
+
+/* Logo CineScope no card */
+.auth-card__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.auth-card__brand-icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.75rem;
+  background: var(--cs-surface);
+  border: 1px solid rgba(255,255,255,0.1);
+  display: grid;
+  place-items: center;
+  box-shadow: var(--cs-glow-gold);
+}
+
+.auth-card__brand-icon .material-symbols-outlined {
+  color: var(--cs-tertiary);
+  font-size: 1.375rem;
+}
+
+.auth-card__brand-name {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--cs-on-surface);
+}
+
+.auth-card__brand-name em {
+  font-style: normal;
+  color: var(--cs-primary-container);
+}
+
+/* Título */
+.auth-card h1 {
+  font-size: 1.875rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* Inputs */
+.auth-card input {
+  width: 100%;
+  min-height: 2.9rem;
+  padding: 0 1rem;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 0.75rem;
+  background: rgba(12,14,20,0.6);
+  color: var(--cs-on-surface);
+  font-size: 0.9375rem;
+  outline: none;
+  transition: border-color 150ms, box-shadow 150ms;
+}
+
+.auth-card input::placeholder {
+  color: var(--cs-muted);
+}
+
+.auth-card input:focus {
+  border-color: var(--cs-secondary);
+  box-shadow: 0 0 0 3px rgba(68,226,205,0.15);
+}
+
+/* Erro */
+.auth-error {
+  color: var(--cs-error);
+  font-size: 0.875rem;
+  padding: 0.65rem 0.9rem;
+  border-radius: 0.625rem;
+  background: rgba(147,0,10,0.2);
+  border: 1px solid rgba(255,180,171,0.2);
+}
+
+/* Botão primário */
+.auth-card .primary-action {
+  width: 100%;
+  min-height: 3rem;
+  font-size: 1rem;
+}
+
+/* Botão texto */
+.auth-card .text-button {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--cs-secondary);
+  padding: 0.25rem;
+}
+
+/* Separador */
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--cs-muted);
+  font-size: 0.75rem;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.1);
+}

@@ -1,19 +1,46 @@
-.favorites-page h1 {
-  font-size: clamp(2rem, 5vw, 3.4rem);
+.favorites-page {
+  padding-top: 8rem;
+  padding-bottom: 4rem;
+}
+
+.favorites-header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.favorites-header__title {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.favorites-header__title h1 {
+  background: linear-gradient(90deg, var(--cs-primary-fixed-dim), var(--cs-on-surface));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.favorites-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
 }
 
 .favorites-count {
-  color: var(--color-muted);
-}
-
-.primary-link {
   display: inline-flex;
   align-items: center;
-  min-height: 2.7rem;
-  padding: 0 1rem;
+  justify-content: center;
+  padding: 0.35rem 1rem;
   border-radius: 999px;
-  background: var(--color-accent);
-  color: #ffffff;
-  font-weight: 800;
-  text-decoration: none;
+  background: rgba(40,42,49,0.5);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--cs-on-surface);
+  font-size: 0.875rem;
+  font-weight: 700;
 }
