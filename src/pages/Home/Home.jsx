@@ -318,10 +318,12 @@ export default function Home() {
   }
 
   /* ─── Render ─────────────────────────────────────────────── */
+  const showHero = !hasSearch && !category && homeStatus === "success";
+
   return (
-    <div className="page page--home">
+    <div className="page page--home" style={!showHero ? { paddingTop: "5rem" } : {}}>
       {/* Hero — exibido quando não há busca */}
-      {!hasSearch && !category && homeStatus === "success" && (
+      {showHero && (
         <HeroSection
           movie={heroMovie}
           isFav={heroMovie ? isFavorite(heroMovie.id) : false}

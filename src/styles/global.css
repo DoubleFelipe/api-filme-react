@@ -335,6 +335,7 @@ h1, h2, h3, h4, p {
   font-size: 0.875rem;
   font-weight: 700;
   cursor: pointer;
+  white-space: nowrap;
   transition: background 150ms, color 150ms, box-shadow 150ms;
 }
 
@@ -495,11 +496,7 @@ h1, h2, h3, h4, p {
 .animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
 
 /* ── Responsivo ─────────────────────────────────────────────── */
-@media (max-width: 640px) {
-  .movie-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
+
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
