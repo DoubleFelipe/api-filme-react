@@ -212,6 +212,7 @@
 
 /* ── Corpo das Seções de Detalhes ───────────────────────────── */
 .details-body {
+  width: 100%;
   display: grid;
   gap: 3.5rem;
   padding: 3rem var(--cs-gutter);
@@ -219,8 +220,27 @@
   margin: 0 auto;
 }
 
+/* Grid items with intrinsic content (iframe, rails and long text) must be
+   allowed to shrink to the available page width. Without this, the grid can
+   grow past the viewport and later sections end up rendered off-screen. */
+.details-body > * {
+  width: 100%;
+  min-width: 0;
+}
+
+.details-body .content-section,
+.details-body > section {
+  min-width: 0;
+}
+
+.details-body .section-heading,
+.details-body .rail-header {
+  min-width: 0;
+}
+
 /* ── Trailer ─────────────────────────────────────────────────── */
 .trailer-frame {
+  width: 100%;
   overflow: hidden;
   aspect-ratio: 16 / 9;
   border-radius: 0.75rem;
@@ -271,6 +291,10 @@
   font-weight: 700;
   color: var(--cs-on-surface);
   overflow-wrap: anywhere;
+}
+
+.cast-card__info {
+  min-width: 0;
 }
 
 .cast-card__info p {
